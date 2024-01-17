@@ -6,9 +6,8 @@ const DarkModeButton = () => {
   useEffect(() => {
     if (window.matchMedia("(prefers-color-schema: dark)").matches) {
       setTheme("dark");
-    } else {
-      setTheme("light");
     }
+    setTheme("dark");
   }, []);
 
   useEffect(() => {
