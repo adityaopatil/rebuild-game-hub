@@ -1,19 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import DarkModeButton from "./components/DarkModeButton";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GameCard from "./components/GameCard";
 
 function App() {
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="col-span-2">
+      <div className="app-container">
+        <div className="navbar">
           <NavBar />
         </div>
-        <div className="hidden lg:block lg:col-span-1 bg-yellow-400">Aside</div>
-        <div className="col-span-2 lg:col-span-1">
+        <div className="aside-col">
+          <div className="image"></div>
+        </div>
+        <div className="main-col">
           <GameGrid />
         </div>
       </div>
