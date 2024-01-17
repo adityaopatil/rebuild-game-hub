@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import DarkModeButton from "./components/DarkModeButton";
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
           <NavBar />
         </div>
         <div className="hidden lg:block lg:col-span-1 bg-yellow-400">Aside</div>
-        <div className="col-span-2 lg:col-span-1 bg-blue-400">Main</div>
+        <div className="col-span-2 lg:col-span-1">
+          <GameGrid />
+        </div>
       </div>
     </>
   );
