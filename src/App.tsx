@@ -2,6 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GameCard from "./components/GameCard";
+import GenreList from "./components/GenreList";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <NavBar />
         </div>
         <div className="aside-col">
-          <div className="image"></div>
+          <GenreList />
         </div>
         <div className="main-col">
           <GameGrid />
