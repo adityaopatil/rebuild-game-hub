@@ -1,72 +1,70 @@
-import React, { useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import usePlatform, { Platform } from "../hooks/usePlatform";
+
+function classNames(...classes: (string | boolean | undefined)[]): string {
+  return classes.filter(Boolean).join(" ");
+}
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
   selectedPlatform: Platform | null;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+export default function PlatformSelector({
+  onSelectPlatform,
+  selectedPlatform,
+}: Props) {
   const { data, error } = usePlatform();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  if (error) return null;
+  console.log(isOpen);
 
   return (
-    <div className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left">
       <div>
-        <button
-          onClick={toggleDropdown}
-          className={`inline-flex items-center justify-between w-full px-4 py-2 text-lg font-medium dark:text-white ${
-            isOpen ? "bg-gray-300" : "bg-gray-200"
-          } hover:bg-gray-300 ${
-            isOpen ? "dark:bg-gray-700" : "dark:bg-gray-800"
-          } dark:hover:bg-gray-700 rounded-md`}
-        >
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-4 py-2 text-lg font-medium dark:text-white bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700">
           {selectedPlatform?.name ? `${selectedPlatform.name}` : "Platforms"}
-          <svg
-            className={`w-5 h-5 ml-2 -mr-1 ${
-              isOpen ? "transform rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
-        </button>
+          <ChevronDownIcon
+            className="-mr-1 h-7 w-7 dark:text-white"
+            aria-hidden="true"
+          />
+        </Menu.Button>
       </div>
 
-      {isOpen && (
-        <div className="absolute z-10 mt-2 bg-gray-200 dark:bg-gray-800 rounded-md border border-gray-600">
-          <ul className="dark:text-white text-lg py-2">
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute left-3 z-10 mt-2 w-56 origin-top-right rounded-md dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
             {data.map((platform) => (
-              <li
-                onClick={() => {
-                  onSelectPlatform(platform);
-                  setIsOpen(false);
-                }}
-                className="block pl-4 pr-40 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer"
-                key={platform.id}
-              >
-                {platform.name}
-              </li>
+              <Menu.Item key={platform.id}>
+                {({ active }) => (
+                  <a
+                    onClick={() => onSelectPlatform(platform)}
+                    href="#"
+                    className={classNames(
+                      active
+                        ? "dark:bg-gray-700 dark:text-white"
+                        : "dark:text-white",
+                      "block px-4 py-2 text-lg"
+                    )}
+                  >
+                    {platform.name}
+                  </a>
+                )}
+              </Menu.Item>
             ))}
-          </ul>
-        </div>
-      )}
-    </div>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
-};
-
-export default PlatformSelector;
+}

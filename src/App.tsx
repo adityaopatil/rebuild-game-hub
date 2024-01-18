@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatform";
+import SortSelector from "./components/SortSelector";
+import DropdownList from "./components/DropdownList";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -28,12 +30,15 @@ function App() {
           />
         </div>
         <div className="main-col">
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          />
+          <div className="flex space-x-5">
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+            />
+            <SortSelector />
+          </div>
           <GameGrid gameQuery={gameQuery} />
         </div>
       </div>

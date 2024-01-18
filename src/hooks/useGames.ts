@@ -22,7 +22,6 @@ const useGames = (gameQuery: GameQuery, deps: any) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(true);
-  console.log(games);
 
   useEffect(
     () => {
