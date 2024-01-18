@@ -16,7 +16,10 @@ function App() {
           <NavBar />
         </div>
         <div className="aside-col">
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </div>
         <div className="main-col">
           <GameGrid selectedGenre={selectedGenre} />
