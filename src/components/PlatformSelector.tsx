@@ -19,8 +19,6 @@ export default function PlatformSelector({
   const { data, error } = usePlatform();
   const [isOpen, setOpen] = useState(false);
 
-  console.log(isOpen);
-
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -42,7 +40,7 @@ export default function PlatformSelector({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-3 z-10 mt-2 w-56 origin-top-right rounded-md dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute left-3 z-10 mt-2 w-60 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {data.map((platform) => (
               <Menu.Item key={platform.id}>
@@ -52,7 +50,7 @@ export default function PlatformSelector({
                     href="#"
                     className={classNames(
                       active
-                        ? "dark:bg-gray-700 dark:text-white"
+                        ? "dark:bg-gray-700 bg-gray-200 dark:text-white"
                         : "dark:text-white",
                       "block px-4 py-2 text-lg"
                     )}

@@ -1,58 +1,75 @@
-import React, { useState } from "react";
+import { Fragment, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
-interface Props {}
+function classNames(...classes: (string | boolean | undefined)[]): string {
+  return classes.filter(Boolean).join(" ");
+}
 
-const SortSelector = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface Props {
+  sortOrder: string;
+  onSelectSortOrder: (sortOrder: string) => void;
+}
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+  const sortOrders = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average rating" },
+  ];
+
+  const currentSortOrder = sortOrders.find(
+    (order) => order.value === sortOrder
+  );
 
   return (
-    <div className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left">
       <div>
-        <button
-          onClick={toggleDropdown}
-          className={`inline-flex items-center justify-between w-full px-4 py-2 text-lg font-medium dark:text-white ${
-            isOpen ? "bg-gray-300" : "bg-gray-200"
-          } hover:bg-gray-300 ${
-            isOpen ? "dark:bg-gray-700" : "dark:bg-gray-800"
-          } dark:hover:bg-gray-700 rounded-md`}
-        >
-          OrderBy: Relevance
-          <svg
-            className={`w-5 h-5 ml-2 -mr-1 ${
-              isOpen ? "transform rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
-        </button>
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-4 py-2 text-lg font-medium dark:text-white bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700">
+          Order By: {currentSortOrder?.label || "Relevance"}
+          <ChevronDownIcon
+            className="-mr-1 h-7 w-7 dark:text-white"
+            aria-hidden="true"
+          />
+        </Menu.Button>
       </div>
 
-      {isOpen && (
-        <div className="absolute z-10 mt-2 bg-gray-200 dark:bg-gray-800 rounded-md border border-gray-600">
-          <ul className="dark:text-white text-lg py-2">
-            <li className="block pl-4 pr-40 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
-              Relevance
-            </li>
-            <li className="block pl-4 pr-40 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
-              Date Added
-            </li>
-          </ul>
-        </div>
-      )}
-    </div>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute z-10 mt-2 w-60 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            {sortOrders.map((order) => (
+              <Menu.Item key={order.value}>
+                {({ active }) => (
+                  <a
+                    onClick={() => onSelectSortOrder(order.value)}
+                    href="#"
+                    className={classNames(
+                      active
+                        ? "dark:bg-gray-700 bg-gray-200 dark:text-white"
+                        : "dark:text-white",
+                      "block px-4 py-2 text-lg"
+                    )}
+                  >
+                    {order.label}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 };
 
