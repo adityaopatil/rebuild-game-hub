@@ -5,7 +5,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <div className="v-screen h-full bg-white dark:bg-slate-950 dark:text-white">
+    <div className="v-screen bg-white dark:bg-slate-950 dark:text-white">
       <App />
     </div>
   </React.StrictMode>

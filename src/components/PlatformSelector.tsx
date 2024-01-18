@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import usePlatform from "../hooks/usePlatform";
+import usePlatform, { Platform } from "../hooks/usePlatform";
 
-const PlatformSelector = () => {
+interface Props {
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatform();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleOptionClick = (option: string) => {
-    console.log(`Selected option: ${option}`);
-    setIsOpen(false);
   };
 
   if (error) return null;
@@ -27,7 +27,7 @@ const PlatformSelector = () => {
             isOpen ? "dark:bg-gray-700" : "dark:bg-gray-800"
           } dark:hover:bg-gray-700 rounded-md transition ease-out duration-300`}
         >
-          Platforms
+          {selectedPlatform?.name ? `${selectedPlatform.name}` : "Platforms"}
           <svg
             className={`w-5 h-5 ml-2 -mr-1 ${
               isOpen ? "transform rotate-180" : ""
@@ -38,9 +38,9 @@ const PlatformSelector = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M19 9l-7 7-7-7"
             ></path>
           </svg>
@@ -52,7 +52,10 @@ const PlatformSelector = () => {
           <ul className="dark:text-white text-lg py-2">
             {data.map((platform) => (
               <li
-                onClick={() => handleOptionClick(platform.name)}
+                onClick={() => {
+                  onSelectPlatform(platform);
+                  setIsOpen(false);
+                }}
                 className="block pl-4 pr-40 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer"
                 key={platform.id}
               >
