@@ -7,7 +7,7 @@
   row-gap: 10px;
   column-gap: 10px;
   height: 100%;
-  padding: 0 4px;
+  padding: 0 6px;
 }
 
 .navbar {
@@ -44,6 +44,7 @@
   }
 
   .aside-col {
+    padding: 0 10px 0 20px;
     grid-column: 1/2;
   }
 
