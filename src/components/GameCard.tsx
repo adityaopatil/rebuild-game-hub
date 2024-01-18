@@ -11,7 +11,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <>
-      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md dark:bg-gray-800 lg:aspect-none group-hover:opacity-75 ">
+      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md dark:bg-gray-800 lg:aspect-none group-hover:opacity-75 border-b border-gray-300">
         <img
           src={getCroppedImageUrl(game.background_image)}
           alt={game.name}

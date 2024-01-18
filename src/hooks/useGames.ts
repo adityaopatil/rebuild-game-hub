@@ -3,6 +3,7 @@ import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 import { Genre } from "./useGenres";
 import { Platform } from "./usePlatform";
+import { GameQuery } from "../App";
 
 export interface Game {
   id: number;
@@ -17,24 +18,23 @@ interface FetchGamesResponse {
   results: Game[];
 }
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null,
-  deps: any
-) => {
+const useGames = (gameQuery: GameQuery, deps: any) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(true);
+  console.log(games);
 
   useEffect(
     () => {
       const controller = new AbortController();
+      setLoading(true);
+
       apiClient
         .get<FetchGamesResponse>("/games", {
           signal: controller.signal,
           params: {
-            genres: selectedGenre?.id,
-            platforms: selectedPlatform?.id,
+            genres: gameQuery.genre?.id,
+            platforms: gameQuery.platform?.id,
           },
         })
         .then((res) => {
@@ -53,8 +53,6 @@ const useGames = (
   );
 
   return { games, error, isLoading };
-  //Here we return the properties which we want to export
-  //using our hook
 };
 
 export default useGames;
