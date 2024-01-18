@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import { Genre } from "./useGenres";
 
 export interface Platform {
   id: number;
@@ -21,29 +22,33 @@ interface FetchGamesResponse {
   results: Game[];
 }
 
-const useGames = () => {
+const useGames = (selectedGenre: Genre | null, deps: any) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    apiClient
-      .get<FetchGamesResponse>("/games", {
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setLoading(false);
-        setGames(res.data.results);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
+  useEffect(
+    () => {
+      const controller = new AbortController();
+      apiClient
+        .get<FetchGamesResponse>("/games", {
+          signal: controller.signal,
+          params: { genres: selectedGenre?.id },
+        })
+        .then((res) => {
+          setLoading(false);
+          setGames(res.data.results);
+        })
+        .catch((err) => {
+          if (err instanceof CanceledError) return;
+          setError(err.message);
+          setLoading(false);
+        });
 
-    return () => controller.abort();
-  }, []);
+      return () => controller.abort();
+    },
+    deps ? [...deps] : []
+  );
 
   return { games, error, isLoading };
   //Here we return the properties which we want to export

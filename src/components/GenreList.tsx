@@ -1,8 +1,11 @@
-import { useState } from "react";
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -24,7 +27,12 @@ const GenreList = () => {
               className="w-10 h-10 rounded-md mr-2"
               src={getCroppedImageUrl(g.image_background)}
             />
-            <p className="text-lg">{g.name}</p>
+            <button
+              onClick={() => onSelectGenre(g)}
+              className="text-lg hover:underline"
+            >
+              {g.name}
+            </button>
           </li>
         ))}
       </ul>
