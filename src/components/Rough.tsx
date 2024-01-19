@@ -22,10 +22,10 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         <button
           onClick={toggleDropdown}
           className={`inline-flex items-center justify-between w-full px-4 py-2 text-lg font-medium dark:text-white ${
-            isOpen ? "bg-gray-300" : "bg-gray-200"
-          } hover:bg-gray-300 ${
-            isOpen ? "dark:bg-gray-800" : "dark:bg-gray-900"
-          } dark:hover:bg-gray-700 rounded-md`}
+            isOpen ? "bg-gray-200" : "bg-gray-100"
+          } hover:bg-gray-200 ${
+            isOpen ? "dark:bg-gray-700" : "dark:bg-gray-700"
+          } dark:hover:bg-gray-600 rounded-md`}
         >
           {selectedPlatform?.name ? `${selectedPlatform.name}` : "Platforms"}
           <svg
@@ -48,7 +48,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
       </div>
 
       {isOpen && (
-        <div className="absolute z-10 mt-2 bg-gray-200 dark:bg-gray-900 rounded-md border border-gray-600">
+        <div className="absolute z-10 mt-2 bg-gray-100 dark:bg-gray-700 rounded-md border border-gray-600">
           <ul className="dark:text-white text-lg py-2">
             {data.map((platform) => (
               <li
@@ -56,7 +56,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
                   onSelectPlatform(platform);
                   setIsOpen(false);
                 }}
-                className="block pl-4 pr-40 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer"
+                className="block pl-4 pr-40 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
                 key={platform.id}
               >
                 {platform.name}

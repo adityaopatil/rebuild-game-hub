@@ -3,7 +3,24 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gray: {
+          100: "#ededed",
+          200: "#d3d3d3",
+          300: "#b3b3b3",
+          400: "a0a0a0",
+          500: "#898989",
+          600: "#383838",
+          700: "#202020",
+          800: "#121212",
+          900: "#111",
+        },
+        slate: {
+          600: "#1e1e1e",
+        },
+      },
+    },
   },
   plugins: [],
 };

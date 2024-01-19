@@ -29,7 +29,7 @@ const SearchInput = ({ onSearch }: Props) => {
             type="text"
             name="price"
             id="price"
-            className="block w-full rounded-full border-0 py-3 pl-9 pr-22 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 outline-none sm:text-lg sm:leading-6 dark:bg-gray-900 dark:hover:bg-gray-800 bg-gray-200 hover:bg-gray-300"
+            className="block w-full rounded-full border-0 py-3 pl-9 pr-22 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 outline-none sm:text-lg sm:leading-6 dark:bg-gray-700 dark:hover:bg-slate-600 bg-gray-100 hover:bg-gray-200"
             placeholder="Search games..."
           />
         </div>

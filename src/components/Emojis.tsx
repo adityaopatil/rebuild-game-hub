@@ -1,4 +1,3 @@
-import React from "react";
 import bullsEye from "../assets/bulls-eye.webp";
 import thumbsUp from "../assets/thumbs-up.webp";
 import meh from "../assets/meh.webp";
@@ -11,6 +10,7 @@ const Emojis = ({ rating }: Props) => {
   if (rating < 3) return null;
 
   const emojiMap: {
+    //[key: number]- this tells we have any number of keys of type number
     [key: number]: { src: string; alt: string; size: string };
   } = {
     3: { src: meh, alt: "meh", size: "w-10 h-10" },
