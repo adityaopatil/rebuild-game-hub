@@ -4,3 +4,10 @@
 @import "tailwindcss/utilities";
 
 /* Your custom styles go here */
+
+/* Apply dark background to body */
+body.dark {
+  background-color: rgb(
+    3 7 18
+  ); /* Replace with your desired dark background color */
+}

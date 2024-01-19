@@ -38,7 +38,7 @@ const PlatformIconList = ({ platforms }: Props) => {
         const IconComponent = iconMap[platform.slug];
         return (
           <div key={platform.slug} className="inline-block mr-2 text-gray-400">
-            {IconComponent && <IconComponent className="w-6 h-6" />}
+            {IconComponent && <IconComponent className="w-5 h-5" />}
           </div>
         );
       })}

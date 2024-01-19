@@ -8,11 +8,13 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatform";
 import SortSelector from "./components/SortSelector";
 import DropdownList from "./components/DropdownList";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -22,7 +24,11 @@ function App() {
     <>
       <div className="app-container">
         <div className="navbar">
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </div>
         <div className="aside-col">
           <GenreList
@@ -31,6 +37,7 @@ function App() {
           />
         </div>
         <div className="main-col">
+          <GameHeading gameQuery={gameQuery} />
           <div className="flex space-x-5">
             <PlatformSelector
               selectedPlatform={gameQuery.platform}

@@ -21,11 +21,16 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
+      <div className="mb-4">
+        <h2 className="text-4xl font-bold leading-7 sm:truncate sm:text-4xl sm:tracking-tight">
+          Genres
+        </h2>
+      </div>
       <ul className="space-y-3">
         {data.map((g) => (
           <li key={g.id} className="flex items-center">
             <img
-              className="w-10 h-10 rounded-md mr-2"
+              className="w-10 h-10 rounded-md mr-2 object-cover"
               src={getCroppedImageUrl(g.image_background)}
             />
             <button

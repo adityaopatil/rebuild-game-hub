@@ -1,6 +1,6 @@
 const GameCardSekeleton = () => {
   return (
-    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md dark:bg-gray-800 lg:aspect-none animate-pulse border border-gray-300">
+    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md dark:bg-gray-900 lg:aspect-none animate-pulse border border-gray-300">
       <div>
         <div className="h-60 w-full dark:bg-gray-500 bg-gray-300"></div>
       </div>
