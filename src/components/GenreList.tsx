@@ -23,7 +23,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
     <>
       <div className="mb-4">
         <h2 className="text-4xl font-bold leading-7 sm:truncate sm:text-4xl sm:tracking-tight">
-          Genre
+          Genres
         </h2>
       </div>
       <ul className="space-y-3">
