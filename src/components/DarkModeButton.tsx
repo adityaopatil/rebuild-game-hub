@@ -24,7 +24,7 @@ const DarkModeButton = () => {
 
   return (
     <>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center ml-2">
         <div
           className={`pointer-events-auto h-6 w-10 rounded-full p-1 ring-1 ring-inset transition duration-200 ease-in-out ${
             theme === "dark"
@@ -39,7 +39,7 @@ const DarkModeButton = () => {
             }`}
           ></div>
         </div>
-        <span className="ml-2">Dark Mode</span>
+        <span className="ml-2 whitespace-nowrap">Dark Mode</span>
       </div>
     </>
   );
