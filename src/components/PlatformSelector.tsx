@@ -22,7 +22,7 @@ export default function PlatformSelector({
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-4 py-2 text-lg font-medium bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+        <Menu.Button className="inline-flex w-auto justify-center gap-x-1.5 rounded-md px-4 py-2 text-lg font-medium bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
           {selectedPlatform?.name ? `${selectedPlatform.name}` : "Platforms"}
           <ChevronDownIcon className="-mr-1 h-7 w-7" aria-hidden="true" />
         </Menu.Button>

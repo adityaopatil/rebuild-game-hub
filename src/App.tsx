@@ -38,7 +38,7 @@ function App() {
         </div>
         <div className="main-col">
           <GameHeading gameQuery={gameQuery} />
-          <div className="flex space-x-5">
+          <div className="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-5">
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
               onSelectPlatform={(platform) =>

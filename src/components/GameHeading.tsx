@@ -25,10 +25,8 @@ const GameHeading = ({ gameQuery }: Props) => {
     gameQuery.genre?.name || ""
   } Games`;
   return (
-    <div className="mb-8">
-      <h2 className="text-6xl font-bold leading-7 sm:truncate sm:text-6xl sm:tracking-tight">
-        {heading}
-      </h2>
+    <div className="mt-10 mb-8">
+      <p className="text-6xl font-bold">{heading}</p>
     </div>
   );
 };
