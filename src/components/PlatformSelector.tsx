@@ -9,21 +9,17 @@ function classNames(...classes: (string | boolean | undefined)[]): string {
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
 }
 
-export default function PlatformSelector({
-  onSelectPlatform,
-  selectedPlatform,
-}: Props) {
+export default function PlatformSelector({ onSelectPlatform }: Props) {
   const { data, error } = usePlatform();
-  const [isOpen, setOpen] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState("");
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-auto justify-center gap-x-1.5 rounded-md px-4 py-2 text-lg font-medium bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
-          {selectedPlatform?.name ? `${selectedPlatform.name}` : "Platforms"}
+          {selectedPlatform ? `${selectedPlatform}` : "Platforms"}
           <ChevronDownIcon className="-mr-1 h-7 w-7" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -43,7 +39,10 @@ export default function PlatformSelector({
               <Menu.Item key={platform.id}>
                 {({ active }) => (
                   <a
-                    onClick={() => onSelectPlatform(platform)}
+                    onClick={() => {
+                      onSelectPlatform(platform);
+                      setSelectedPlatform(platform.name);
+                    }}
                     href="#"
                     className={classNames(
                       active ? "dark:bg-gray-600 bg-gray-100" : "",
