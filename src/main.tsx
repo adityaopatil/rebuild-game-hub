@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <div className="v-screen bg-white dark:bg-gray-900 dark:text-white">
         <App />
       </div>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   </React.StrictMode>
 );
