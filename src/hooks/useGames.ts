@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
-import { Genre } from "./useGenres";
 import { Platform } from "./usePlatform";
 import { GameQuery } from "../App";
 
@@ -45,6 +44,7 @@ const useGames = (gameQuery: GameQuery, deps: any) => {
         })
         .catch((err) => {
           if (err instanceof CanceledError) return;
+          console.log(err.message);
           setError(err.message);
           setLoading(false);
         });

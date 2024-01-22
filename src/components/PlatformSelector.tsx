@@ -39,7 +39,7 @@ export default function PlatformSelector({
       >
         <Menu.Items className="absolute z-10 mt-2 w-60 origin-top-right rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            {data.map((platform) => (
+            {data?.map((platform) => (
               <Menu.Item key={platform.id}>
                 {({ active }) => (
                   <a

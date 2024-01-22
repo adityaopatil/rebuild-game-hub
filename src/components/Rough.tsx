@@ -50,7 +50,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
       {isOpen && (
         <div className="absolute z-10 mt-2 bg-gray-100 dark:bg-gray-700 rounded-md border border-gray-600">
           <ul className="dark:text-white text-lg py-2">
-            {data.map((platform) => (
+            {data?.map((platform) => (
               <li
                 onClick={() => {
                   onSelectPlatform(platform);
