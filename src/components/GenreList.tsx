@@ -1,16 +1,11 @@
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({
-  onSelectGenre,
-  selectedGenreId: selectedGenre,
-}: Props) => {
+const GenreList = () => {
   const { data, error, isLoading } = useGenres();
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
 
   if (error) return null;
 
@@ -37,9 +32,9 @@ const GenreList = ({
               src={getCroppedImageUrl(g.image_background)}
             />
             <button
-              onClick={() => onSelectGenre(g)}
+              onClick={() => setGenreId(g.id)}
               className={`text-lg hover:underline ${
-                selectedGenre === g.id ? "font-bold" : ""
+                selectedGenreId === g.id ? "font-bold" : ""
               }`}
             >
               {g.name}

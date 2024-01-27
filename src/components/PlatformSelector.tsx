@@ -2,18 +2,16 @@ import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import usePlatform, { Platform } from "../hooks/usePlatform";
+import useGameQueryStore from "../store";
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-interface Props {
-  onSelectPlatform: (platform: Platform) => void;
-}
-
-export default function PlatformSelector({ onSelectPlatform }: Props) {
+export default function PlatformSelector() {
   const { data, error } = usePlatform();
   const [selectedPlatform, setSelectedPlatform] = useState("");
+  const setPlatFormId = useGameQueryStore((s) => s.setPlatFormId);
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -40,7 +38,7 @@ export default function PlatformSelector({ onSelectPlatform }: Props) {
                 {({ active }) => (
                   <a
                     onClick={() => {
-                      onSelectPlatform(platform);
+                      setPlatFormId(platform.id);
                       setSelectedPlatform(platform.name);
                     }}
                     href="#"
