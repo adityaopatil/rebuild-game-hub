@@ -9,10 +9,6 @@
   min-height: 100vh;
 }
 
-.navbar {
-  grid-area: nav;
-}
-
 .main-col {
   grid-area: main;
 }
