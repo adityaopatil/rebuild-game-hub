@@ -8,8 +8,8 @@ interface Props {
 }
 
 const GameAttribute = ({ game }: Props) => {
-  const headerStyle = "font-bold text-xl inline-block mr-2 text-gray-500";
-  const listStyle = "hover:text-gray-200";
+  const headerStyle = "font-bold text-2xl inline-block mr-2 text-gray-500";
+  const listStyle = "hover:text-gray-200 text-lg";
 
   return (
     <div className="my-4 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2">

@@ -3,12 +3,11 @@ import useGame from "../hooks/useGame";
 import { useState } from "react";
 import ExpandableText from "../components/ExpandableText";
 import GameAttribute from "../components/GameAttribute";
+import GameTrailers from "../components/GameTrailers";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
-
-  console.log(game);
 
   if (isLoading)
     return (
@@ -25,6 +24,7 @@ const GameDetailPage = () => {
       <h2 className="text-5xl font-bold my-4">{game.name}</h2>
       <ExpandableText children={game.description_raw} />
       <GameAttribute game={game} />
+      <GameTrailers slug={game.slug} />
     </>
   );
 };

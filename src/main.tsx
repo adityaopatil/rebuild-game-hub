@@ -12,8 +12,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <div
-        className="v-screen bg-white dark:bg-gray-900 dark:text-white"
-        style={{ minHeight: "100vh" }}
+        className="bg-white dark:bg-gray-900 dark:text-white"
+        style={{ minHeight: "100vh", minWidth: "100vh" }}
       >
         <RouterProvider router={router} />
       </div>

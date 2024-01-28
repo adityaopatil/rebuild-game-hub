@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
   const summary = expanded ? children : children.substring(0, limit) + "...";
 
   return (
-    <p>
+    <p className="text-lg">
       {summary}
       <button
         onClick={() => setExpanded(!expanded)}
