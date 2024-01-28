@@ -22,11 +22,17 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <h2 className="text-5xl font-bold my-4">{game.name}</h2>
-      <ExpandableText children={game.description_raw} />
-      <GameAttribute game={game} />
-      <GameTrailers slug={game.slug} />
-      <GameScreenshots slug={game.slug} />
+      <div className="mt-[50px] mx-4 grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
+        <div>
+          <h2 className="text-5xl font-bold my-4">{game.name}</h2>
+          <ExpandableText children={game.description_raw} />
+          <GameAttribute game={game} />
+        </div>
+        <div>
+          <GameTrailers slug={game.slug} />
+          <GameScreenshots slug={game.slug} />
+        </div>
+      </div>
     </>
   );
 };

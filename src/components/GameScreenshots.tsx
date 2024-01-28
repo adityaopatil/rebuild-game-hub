@@ -7,12 +7,20 @@ interface Props {
 const GameScreenshots = ({ slug }: Props) => {
   const { data, isLoading, error } = useScreenShots(slug);
 
-  console.log(data?.results);
+  if (isLoading)
+    return (
+      <svg
+        className="animate-spin h-8 w-8 mr-3 border-t-2 border-white rounded-full"
+        viewBox="0 0 24 24"
+      ></svg>
+    );
+
+  if (error) throw error;
 
   return (
-    <div className="mt-[50px] mx-5 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+    <div className="mt-[50px] grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
       {data?.results.map((s) => (
-        <div className="group relative">
+        <div key={s.id} className="group relative">
           <img
             src={s.image}
             alt="Game Screenshots"

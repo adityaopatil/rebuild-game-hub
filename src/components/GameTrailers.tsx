@@ -23,13 +23,12 @@ const GameTrailers = ({ slug }: Props) => {
 
   return (
     <video
-      className="mx-4"
+      className="w-full"
       controls
       autoPlay
+      muted
       loop
       poster={first.preview}
-      width="1000"
-      height="500"
     >
       <source src={first.data[480]} type="video/mp4" />
     </video>
