@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <div
         className="v-screen bg-white dark:bg-gray-900 dark:text-white"
-        style={{ height: "100vh" }}
+        style={{ minHeight: "100vh" }}
       >
         <RouterProvider router={router} />
       </div>

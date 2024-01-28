@@ -13,7 +13,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <>
-      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md dark:bg-gray-700 lg:aspect-none group-hover:opacity-75 shadow-lg ring-1 ring-black ring-opacity-5">
+      <div className="group relative overflow-hidden dark:bg-gray-700 lg:aspect-none transition-transform transform scale-100 hover:scale-105 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
         <img
           src={getCroppedImageUrl(game.background_image)}
           alt={game.name}
@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
             <PlatformIconList
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
-            <Link to="/games">
+            <Link to={`/games/${game.slug}`}>
               <h2 className="text-3xl font-bold tracking-tight my-6">
                 {game.name}
               </h2>
