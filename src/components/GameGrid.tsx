@@ -28,6 +28,9 @@ const GameGrid = () => {
   // So if the value is undefined it is converted to boolean false
 
   //next --> to fetchNextPage
+
+  if (!games) return null;
+
   if (error) return <p>{error.message}</p>;
 
   return (
@@ -44,7 +47,7 @@ const GameGrid = () => {
               <GameCardSekeleton />
             </div>
           ))}
-        {games?.pages.map((page, index) => (
+        {games.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map((game) => (
               <div key={game.id} className="group relative">
