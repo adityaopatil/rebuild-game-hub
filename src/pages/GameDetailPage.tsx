@@ -4,6 +4,7 @@ import { useState } from "react";
 import ExpandableText from "../components/ExpandableText";
 import GameAttribute from "../components/GameAttribute";
 import GameTrailers from "../components/GameTrailers";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -25,6 +26,7 @@ const GameDetailPage = () => {
       <ExpandableText children={game.description_raw} />
       <GameAttribute game={game} />
       <GameTrailers slug={game.slug} />
+      <GameScreenshots slug={game.slug} />
     </>
   );
 };

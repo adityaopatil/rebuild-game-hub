@@ -8,8 +8,6 @@ interface Props {
 const GameTrailers = ({ slug }: Props) => {
   const { data, isLoading, error } = useGameTrailer(slug);
 
-  console.log(data);
-
   if (isLoading)
     return (
       <svg
@@ -25,6 +23,7 @@ const GameTrailers = ({ slug }: Props) => {
 
   return (
     <video
+      className="mx-4"
       controls
       autoPlay
       loop
