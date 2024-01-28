@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import usePlatform, { Platform } from "../hooks/usePlatform";
+import usePlatform from "../hooks/usePlatform";
+import { Platform } from "../entities/Platform";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;

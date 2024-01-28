@@ -11,7 +11,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { Platform } from "../hooks/usePlatform";
+import { Platform } from "../entities/Platform";
 import { IconType } from "react-icons";
 
 interface Props {

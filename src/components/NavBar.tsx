@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/logo.webp";
 import DarkModeButton from "./DarkModeButton";
 import SearchInput from "./SearchInput";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";

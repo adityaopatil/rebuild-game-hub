@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
+import { useState } from "react";
+import ExpandableText from "../components/ExpandableText";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
-
   const { data: game, isLoading, error } = useGame(slug!);
 
   if (isLoading)
@@ -17,10 +18,10 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
 
   return (
-    <div className="px-2">
-      <h2>{game.name}</h2>
-      <p>{game.description_raw}</p>
-    </div>
+    <>
+      <h2 className="text-5xl font-bold my-4">{game.name}</h2>
+      <ExpandableText children={game.description_raw} />
+    </>
   );
 };
 

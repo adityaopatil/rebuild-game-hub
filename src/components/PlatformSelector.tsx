@@ -1,7 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import usePlatform, { Platform } from "../hooks/usePlatform";
+import usePlatform from "../hooks/usePlatform";
+import { Platform } from "../entities/Platform";
 import useGameQueryStore from "../store";
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
